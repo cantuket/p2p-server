@@ -49,23 +49,21 @@ exports.createListing = (req,res) => {
 }
 
 exports.updateListing = (req,res) => {
-	console.log(req.body);
 
 	const listing = Listing.findOneAndUpdate({
 		_user:req.user.id,
-		_id:req.params.listingId,
+		_id:req.body['_id'],
 	},
 	{
 		$set: {
 			location:req.body.location,
-			availability:req.body.location,
+			availability:req.body.availability,
 			price:req.body.price
 		}
 	},
-	{safe: true, upsert: true, new : true}
+	{new : true}
 	).exec((err,results)=> {
 		if (err) {console.log(err);}
-		console.log(results);
 		res.json(results);
 	});
 }
