@@ -17,8 +17,10 @@ module.exports = function(app) {
   app.post('/api/create-listing', requireAuth, Listings.createListing);
   app.post('/api/update-listing', requireAuth, Listings.updateListing);
   app.post('/api/add-item', requireAuth, Listings.addItem);
+  app.post('/api/delete-item', requireAuth, Listings.deleteItem);
+  app.post('/api/update-item', requireAuth, Listings.updateItem);
   
   app.get('/api/listings', requireAuth, Listings.fetchListings);
   app.get('/api/listing/:listingId', requireAuth, Listings.fetchSingleListing);
-
+  app.post('/api/delete-listing', requireAuth, Listings.deleteListing);
 }
