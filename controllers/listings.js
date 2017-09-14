@@ -120,6 +120,14 @@ exports.fetchListings = (req,res) => {
 	});
 }
 
+exports.fetchAllListings = (req,res) => {
+	const listing = Listing.find()
+	.exec((err,results)=> {
+		if (err) {console.log(err);}
+		res.json(results);
+	});
+}
+
 exports.fetchSingleListing = (req,res) => {
 	const listing = Listing.findOne({
 		_user:req.user.id,
