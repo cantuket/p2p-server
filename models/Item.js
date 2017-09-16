@@ -8,7 +8,8 @@ const itemSchema = new Schema({
   model: {type:String},
   watts:{type:Number}, 
   bulb:{type:String},
-  condition:{type:String}
+  condition:{type:String},
+  imageUrl:{type:String}
 });
 
 // Export the model

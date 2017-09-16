@@ -7,14 +7,20 @@ const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+require('dotenv').load();
 // DB Setup
 mongoose.connect( process.env.MONGO_URI|| 'mongodb://localhost:auth/auth');
+
+
 
 // App Setup
 app.use(morgan('combined'));
 app.use(cors());
-app.use(bodyParser.json({ type: '*/*' }));
+app.use(bodyParser.json({ type: '*/*',limit: '50mb' }));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(multer({ dest: "./uploads/" })); 
+
 router(app);
 
 // Server Setup
