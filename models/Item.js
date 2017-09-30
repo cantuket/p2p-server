@@ -6,6 +6,8 @@ const itemSchema = new Schema({
   equipmentType: {type: String },
   make:{type:String},
   model: {type:String},
+  attribute:{type:String}, 
+  property:{type:String},
   condition:{type:String},
   imageUrl:{type:String}
 });
